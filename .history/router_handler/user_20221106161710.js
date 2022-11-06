@@ -51,10 +51,6 @@ exports.login = (req, res) => {
     db.query(sql, userinfo.username, (err, results) => {
         if (err) return res.cc(err)
         if (results.length !== 1) return res.cc('登陆失败')
-            // TODO:判断密码是否正确
-        const compareResult = bcrypt.compareSync(userinfo.password, results[0].password)
-        if (!compareResult) return res.cc('登录失败')
-            // TODO:生成token
         res.cc('成功', 0)
     })
 

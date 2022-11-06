@@ -54,7 +54,6 @@ exports.login = (req, res) => {
             // TODO:判断密码是否正确
         const compareResult = bcrypt.compareSync(userinfo.password, results[0].password)
         if (!compareResult) return res.cc('登录失败')
-            // TODO:生成token
         res.cc('成功', 0)
     })
 
