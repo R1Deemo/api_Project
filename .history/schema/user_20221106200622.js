@@ -58,9 +58,3 @@ exports.update_password_schema = {
     }
 
 }
-
-exports.update_avatar_schema = {
-    body: {
-        avatar,
-    }
-}
