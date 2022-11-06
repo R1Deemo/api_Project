@@ -17,7 +17,7 @@ exports.reg_login_schema = {
     body: {
         username,
         password,
-
+        repassword: joi.ref('password')
     },
     //   // 2.2 校验 req.query 中的数据
     //   query: {
@@ -35,23 +35,7 @@ const id = joi.number().integer().min(1).required()
 const nickname = joi.string().required()
 const email = joi.string().email().required()
 exports.update_userinfo_schema = {
-        body: {
-            id,
-            nickname,
-            email,
-        }
-
-    }
-    //修改密码
-    // const oldPwd = joi.number().integer().min(1).required()
-    // const newPwd = joi.string().required()
-    // const repassword = joi.ref('password')
-exports.update_password_schema = {
-    body: {
-        oldPwd: password,
-        newPwd: joi.not(joi.ref('oldPwd')).concat(password),
-        // repassword
-
-    }
-
+    id,
+    nickname,
+    email,
 }

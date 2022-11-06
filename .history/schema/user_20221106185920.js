@@ -43,14 +43,14 @@ exports.update_userinfo_schema = {
 
     }
     //修改密码
-    // const oldPwd = joi.number().integer().min(1).required()
-    // const newPwd = joi.string().required()
-    // const repassword = joi.ref('password')
-exports.update_password_schema = {
+const old = joi.number().integer().min(1).required()
+const newP = joi.string().required()
+const repassword = joi.ref('password')
+exports.update_userinfo_schema = {
     body: {
-        oldPwd: password,
-        newPwd: joi.not(joi.ref('oldPwd')).concat(password),
-        // repassword
+        old,
+        newP,
+        repassword
 
     }
 

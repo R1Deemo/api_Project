@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
     //在路由之前，配置解析token的中间件
 const expressJWT = require('express-jwt')
 const config = require('./config')
-    //配置解析token并设置不需要token就能访问的前缀
+
 app.use(expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api/] }))
 
 //导入并使用路由模块
