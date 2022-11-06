@@ -30,8 +30,8 @@ const userRouter = require('./router/router')
 app.use('/api', userRouter)
     //错误中间件
 app.use(function(err, req, res, next) {
-        if (err) res.cc(err)
-            // res.cc(err)
+        if (err instanceof joi.ValidationError) return res.cc(err)
+        res.cc(err)
     })
     // 启动服务器
 app.listen(3007, () => {

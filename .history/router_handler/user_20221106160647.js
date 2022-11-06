@@ -20,7 +20,7 @@ exports.regUser = (req, res) => {
     db.query(sqlStr, userinfo.username, (err, results) => {
             if (err) {
                 // return res.send({ status: 1, message: err.message })
-                return res.cc(err)
+                return res.cc(err.message)
             }
             if (results.length > 0) {
                 // return res.send({ status: 1, message: '用户名被占用' })
