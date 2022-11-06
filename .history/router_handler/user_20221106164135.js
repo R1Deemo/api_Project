@@ -64,11 +64,7 @@ exports.login = (req, res) => {
         const user = {...results[0], password: '', user_pic: '' }
             // 对用户信息加密，并生成token
         const tokenStr = jwt.sign(user, config.jwtSecretKey, { expiresIn: config.expiresIn })
-        res.send({
-            status: 0,
-            message: '登录成功',
-            token: 'Bearer ' + tokenStr
-        })
+        console.log(tokenStr)
     })
 
 }

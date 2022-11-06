@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken')
 
 //对密码进行加密的包
 const bcrypt = require('bcryptjs')
-    // 导入全局配置文件
-const config = require('../config')
 
 
 
@@ -60,15 +58,7 @@ exports.login = (req, res) => {
         const compareResult = bcrypt.compareSync(userinfo.password, results[0].password)
         if (!compareResult) return res.cc('登录失败')
             // TODO:生成token
-            // 获取用户信息对象，并对密码和头像进行置空
         const user = {...results[0], password: '', user_pic: '' }
-            // 对用户信息加密，并生成token
-        const tokenStr = jwt.sign(user, config.jwtSecretKey, { expiresIn: config.expiresIn })
-        res.send({
-            status: 0,
-            message: '登录成功',
-            token: 'Bearer ' + tokenStr
-        })
     })
 
 }
