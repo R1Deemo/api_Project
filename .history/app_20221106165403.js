@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 const expressJWT = require('express-jwt')
 const config = require('./config')
 
-app.use(expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api/] }))
+app.use(expressJWT({ secret: config.jwtSecretKey })).unless({ path: [/^\/api/] })
 
 //导入并使用路由模块
 const userRouter = require('./router/router')

@@ -27,14 +27,13 @@ app.use(function(req, res, next) {
 const expressJWT = require('express-jwt')
 const config = require('./config')
 
-app.use(expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api/] }))
+app.use(expressJWT({ secret: config.jwtSecretKey })).unless({ path: [/^\/api/] })
 
 //导入并使用路由模块
 const userRouter = require('./router/router')
 app.use('/api', userRouter)
     //错误中间件
 app.use(function(err, req, res, next) {
-        //身份认知失败的错误
         if (err.name === 'UnauthorizedError') return res.cc('身份认证失败')
             //未知错误
         res.cc(err)
