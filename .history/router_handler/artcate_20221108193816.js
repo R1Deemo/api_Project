@@ -63,18 +63,5 @@ exports.getCateById = (req, res) => {
     }
     //更新文章分类数据
 exports.updateCateById = (req, res) => {
-    const sql = 'select * from ev_article_cate where id<>? and (name=? or alias=?)'
-    db.query(sql, [req.body.id, req.body.name, req.body.alias], (err, results) => {
-        if (err) return res.cc(err)
-        if (results.length === 2) return res.cc('分类名称与名称被占用，请更换后重试')
-        if (results.length === 1 && results[0].name === req.body.name && results[0].alias === req.body.alias) return res.cc('分类名称与名称被占用，请更换后重试')
-        if (results.length === 1 && results[0].name === req.body.name) return res.cc('分类名称被占用，请更换后重试')
-        if (results.length === 1 && results[0].alias === req.body.alias) return res.cc('别名被占用，请更换后重试')
-        const sqlStr = 'update ev_article_cate set ? where id=?'
-        db.query(sqlStr, [req.body, req.body.id], (err, results) => {
-            if (err) return res.cc(err)
-            if (results.affectedRows != 1) return res.cc('更新失败')
-            res.cc('更新成功', 0)
-        })
-    })
+    res.send('ok')
 }
