@@ -18,13 +18,12 @@ const pagenum = joi.number().integer().min(1).required()
 const pagesize = joi.number().integer().min(1).required()
     // const cate_id = joi.string()
 const cate_name_id = joi.string()
-const status = joi.string().valid('已发布', '草稿')
     // const state = joi.string()
 exports.get_articleList_schema = {
     body: {
         pagenum,
         pagesize,
         cate_name_id,
-        state: status,
+        state,
     }
 }

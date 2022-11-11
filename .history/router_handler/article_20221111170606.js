@@ -30,10 +30,6 @@ exports.addArticle = (req, res) => {
 exports.getList = (req, res) => {
     const sql = 'select article_id,title,pub_date,state,name from ev_article_cate s,ev_articles c where s.id=c.cate_id&&s.is_delete<>1 '
     db.query(sql, (err, results) => {
-        if (err) return res.cc(err)
-        if (results !== 0) {
-            res.send(results)
-        }
-
+        res.send(results[0])
     })
 }

@@ -25,6 +25,6 @@ exports.get_articleList_schema = {
         pagenum,
         pagesize,
         cate_name_id,
-        state: status,
+        state = status,
     }
 }
