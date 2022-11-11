@@ -8,7 +8,7 @@ const path = require('path')
 const upload = multer({ dest: path.join(__dirname, '../uploads') })
 
 const expressJoi = require('@escook/express-joi')
-const { add_article_schema, get_articleList_schema } = require('../schema/article')
+const { add_article_schema, get_articleList_schema, edit_article_schema } = require('../schema/article')
 
 const articl_handler = require('../router_handler/article')
 
@@ -18,4 +18,13 @@ router.post('/add', upload.single('cover_img'), expressJoi(add_article_schema), 
 
 // 获取文章列表数据
 router.get('/list', expressJoi(get_articleList_schema), articl_handler.getList)
+
+//根据id删除文章数据
+router.get('/delete/:id', articl_handler.deleteArticle)
+
+//根据id获取数据
+router.get('/:id', articl_handler.getArticle)
+
+//根据id更新文章信息
+router.post('/edit', upload.single('cover_img'), expressJoi(edit_article_schema), articl_handler.editArticle)
 module.exports = router

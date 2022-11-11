@@ -21,10 +21,21 @@ const cate_name_id = joi.string()
 const status = joi.string().valid('已发布', '草稿')
     // const state = joi.string()
 exports.get_articleList_schema = {
+        body: {
+            pagenum,
+            pagesize,
+            cate_name_id,
+            state: status,
+        }
+    }
+    // const cover_img = joi.binary().required()
+const id = joi.number().integer().min(1).required()
+exports.edit_article_schema = {
     body: {
-        pagenum,
-        pagesize,
-        cate_name_id,
-        state: status,
+        article_id: id,
+        title,
+        cate_id,
+        content,
+        state,
     }
 }
