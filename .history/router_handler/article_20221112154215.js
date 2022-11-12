@@ -47,7 +47,7 @@ exports.deleteArticle = (req, res) => {
         const sql = 'update ev_articles set is_delete=1 where article_id=?'
         db.query(sql, req.params.id, (err, results) => {
             if (err) return res.cc(err)
-            if (results.affectedRows !== 1) return res.cc('删除失败')
+            if (results.affectedRows != 1) return res.cc('删除失败')
             res.cc('删除文章成功', 0)
         })
     }
